@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+/*Ejercicio 1*/
+nav {
+    @supports (position: sticky) {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    @supports not (position: sticky) {
+        position: static;
+    }
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: #02101f;
+    
+    padding: 30px;
+    
+        a{
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 30px;
+            transition: all 0.5s ease 0.1s;
+
+            &:hover {
+                color: #ffffff;
+                background-color: #1f8bff;
+            }
+        }
+
+}
+
+ /*Ejercicio 3*/
+@mixin compatibilidad($val) {
+    -webkit-transform: $val;
+    -moz-transform: $val;
+    transform: $val; 
+}
+
+/*Ejercicio 2*/
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+        @include compatibilidad(translateY(0px) scale(0.6));
+    }
+    100% {
+        opacity: 1;
+        @include compatibilidad(translateY(20px) scale(1));
+    }
+    
+}
+
+.servicios{
+    color: white;
+    font-size: 20px;
+
+    .tarjeta{
+        background-color: #2360a1;
+        margin: 15px;
+        padding: 20px;
+
+        @supports (animation-name: FadeIn) and (transform: scale(1)) {
+            animation: FadeIn 1s ease-in-out forwards;
+        }
+
+        @supports not ((animation-name: FadeIn) and (transform: scale(1))) {
+            opacity: 1;
+            @include compatibilidad(scale(1));
+        }
+    }
+}

@@ -1,0 +1,71 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin: 0;
+}
+
+/*Ejercicio 1*/
+@supports (position: sticky) {
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+}
+@supports not (position: sticky) {
+  nav {
+    position: static;
+  }
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #02101f;
+  padding: 30px;
+}
+.menu a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 30px;
+  transition: all 0.5s ease 0.1s;
+}
+.menu a:hover {
+  color: #ffffff;
+  background-color: #1f8bff;
+}
+
+/*Ejercicio 3*/
+/*Ejercicio 2*/
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(0px) scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(20px) scale(1);
+  }
+}
+.servicios {
+  color: white;
+  font-size: 20px;
+}
+.servicios .tarjeta {
+  background-color: #2360a1;
+  margin: 15px;
+  padding: 20px;
+}
+@supports (animation-name: FadeIn) and (transform: scale(1)) {
+  .servicios .tarjeta {
+    animation: FadeIn 1s ease-in-out forwards;
+  }
+}
+@supports not ((animation-name: FadeIn) and (transform: scale(1))) {
+  .servicios .tarjeta {
+    opacity: 1;
+    transform: scale(1);
+  }
+}/*# sourceMappingURL=styles.css.map */
